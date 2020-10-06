@@ -28,10 +28,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  register(index: number){
+
+  register(index: number) {
     // this.Complint =
-    this.tweetService.isComplaint(this.Tweets[index].user.name, this.Tweets[index].text);
+    // this.tweetService.isComplaint(this.Tweets[index].user.name, this.Tweets[index].text);
+    this.tweetService.isComplaint(this.Tweets[index].user.screen_name, this.Tweets[index].text).subscribe(res => {
+      console.log(res);
+      this.tweetService.datareciving(res);
+      });
+
+    }
     // this.tweetService.datareciving(this.Complint);
   }
-
-}

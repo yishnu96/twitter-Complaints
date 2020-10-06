@@ -1,9 +1,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Sl. No</th>
+      <th>Sl.No</th>
       <th>Tweets</th>
-      <th>UserID</th>
+      <th>User Name</th>
+      <th>User ID </th>
     </tr>
    </thead>
    <tbody>
@@ -11,6 +12,7 @@
        <td>{{i+1}}</td>
        <td>{{ tweet.text }}</td>
        <td>{{ tweet.user.name }}</td>
+       <td> @{{ tweet.user.screen_name }}</td>
        <td><button class="btn btn-primary" (click)='register(i)'> Register as Complaint </button></td>
      </tr>
    </tbody>

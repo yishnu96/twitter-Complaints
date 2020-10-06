@@ -36,7 +36,7 @@ module.exports.showtweets = function(req, res){
 }
 
 module.exports.complaint = function (req, res){
-  console.log("backend" + req.body)
+  // console.log("backend" + req.body)
   const user = req.body.user;
   const text = req.body.text;
   if (user || text) {
@@ -78,6 +78,7 @@ module.exports.complaint = function (req, res){
 }
 
 module.exports.process = function (req, res){
+
   if (req.params.id) {
     const id = req.params.id;
     ComplaintTweets.find({

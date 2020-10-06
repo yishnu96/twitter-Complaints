@@ -17,8 +17,13 @@ export class TweetService {
     return this.http.get(this.url + '/tweets/showtweets');
   }
 
+  // isComplaint(user: any, text: any) {
+  //    return this.http.post(this.url + '/tweets/complaint',  user,{} )
+  // }
+
   isComplaint(user: any, text: any) {
-     return this.http.post(this.url + '/tweets/complaint',  user,{} )
+    // console.log(user)
+    return this.http.post(this.url + '/tweets/complaint', { user, text }, {})
   }
 
   inProcessing(id: any) {
