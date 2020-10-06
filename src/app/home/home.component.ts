@@ -10,6 +10,7 @@ import { TweetService } from '../shared/services/twitter/tweet.service'
 export class HomeComponent implements OnInit {
 
   Tweets :any[]= [];
+  Complint: any;
   constructor(private tweetService: TweetService) {
     this.displayTweets();
    }
@@ -22,18 +23,15 @@ export class HomeComponent implements OnInit {
     this.tweetService.displaytweeets().subscribe((res:any)=>{
       console.log(res);
       this.Tweets = res.data;
-    },err=>{
+    },(err)=>{
       console.log(err);
     })
   }
 
   register(index: number){
-    console.log("Registered");
-
-    console.log(this.Tweets[index].user.name)
+    // this.Complint =
     this.tweetService.isComplaint(this.Tweets[index].user.name, this.Tweets[index].text);
-
-
+    // this.tweetService.datareciving(this.Complint);
   }
 
 }

@@ -12,7 +12,7 @@ const clint = new Twitter({
 
 module.exports.showtweets = function(req, res){
   clint.get('search/tweets', {
-    q: 'to:@spectatorindex',
+    q: 'to:@airtelindia',
     count: 10,
     result_type: 'recent'
   }, function (err, data, response) {
@@ -36,7 +36,7 @@ module.exports.showtweets = function(req, res){
 }
 
 module.exports.complaint = function (req, res){
-  // console.log("backend"+req.body)
+  console.log("backend" + req.body)
   const user = req.body.user;
   const text = req.body.text;
   if (user || text) {
@@ -90,13 +90,13 @@ module.exports.process = function (req, res){
             _complaintTweet.is_processing = true;
             _complaintTweet.save()
               .then(data => {
-
-                return res.status(200).json({
-                  message: "Tweet is now processing",
-                  status: 200,
-                  data: data,
-                  error: false
-                });
+                clint.post(`statuses/update`,'@'+ data.user.name+' your complaint is in process');
+                // return res.status(200).json({
+                //   message: "Tweet is now processing",
+                //   status: 200,
+                //   data: data,
+                //   error: false
+                // });
               })
               .catch()
           } else {
@@ -132,12 +132,13 @@ module.exports.resolve = function (req, res) {
             _resolveTweet.is_resolved = true;
             _resolveTweet.save()
               .then(data => {
-                return res.status(200).json({
-                  message: "Tweet is resolved",
-                  status: 200,
-                  data: data,
-                  error: false
-                });
+                clint.post(`statuses/update`,'@'+ data.user.name+' your your complaint has been resolved');
+                // return res.status(200).json({
+                //   message: "Tweet is resolved",
+                //   status: 200,
+                //   data: data,
+                //   error: false
+                // });
               })
               .catch(err => {
                 console.log(err);

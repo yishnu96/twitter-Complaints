@@ -14,12 +14,12 @@ export class RegisterComplaintComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  processing(indexes: number){
-    this.tweetService.inProcessing()
+  processing(index: number){
+    this.tweetService.inProcessing(this.Complaints[index].user.id).subscribe();
   }
 
   resolved(index: number){
-    this.tweetService.isResolved()
+    this.tweetService.isResolved(this.Complaints[index].user.id).subscribe();
   }
 
 }
