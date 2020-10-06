@@ -40,6 +40,7 @@
     "http-errors": "^1.6.3",
     "joi": "^13.3.0",
     "jsonwebtoken": "^8.2.1",
+    "mean-cli": "^0.12.15",
     "method-override": "^2.3.10",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
@@ -49,6 +50,7 @@
     "passport-local": "^1.0.0",
     "rxjs": "^6.5.5",
     "swagger-ui-express": "^3.0.9",
+    "twit": "^2.2.11",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {

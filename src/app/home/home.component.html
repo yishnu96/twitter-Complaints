@@ -1,3 +1,17 @@
-<p>
-  home works!
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl. No</th>
+      <th>Tweets</th>
+      <th>UserID</th>
+    </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let tweet of Tweets; let i = index" >
+       <td>{{i+1}}</td>
+       <td>{{ tweet.text }}</td>
+       <td>{{ tweet.user.name }}</td>
+       <td><button (click)='register(i)'> Register as Complaint </button></td>
+     </tr>
+   </tbody>
+</table>

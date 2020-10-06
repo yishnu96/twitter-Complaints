@@ -1,0 +1,20 @@
+<p>All register Complaints</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl. No</th>
+      <th>Tweets</th>
+      <th>UserID</th>
+    </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let complaint of Complaints; let i = index" >
+       <td>{{i+1}}</td>
+       <td>{{ complaint.text }}</td>
+       <td>{{ complaint.user.name }}</td>
+       <td><button (click)='processing(i)'> Process </button></td>
+       <td><button (click)='resolved(i)'> Resolved </button></td>
+     </tr>
+   </tbody>
+</table>
