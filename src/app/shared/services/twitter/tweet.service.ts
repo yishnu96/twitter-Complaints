@@ -17,26 +17,33 @@ export class TweetService {
     return this.http.get(this.url + '/tweets/showtweets');
   }
 
+  fetchingComplaints(){
+    return this.http.get(this.url + '/tweets/fetch_complaints');
+  }
+
   // isComplaint(user: any, text: any) {
   //    return this.http.post(this.url + '/tweets/complaint',  user,{} )
   // }
 
   isComplaint(user: any, text: any) {
-    // console.log(user)
     return this.http.post(this.url + '/tweets/complaint', { user, text }, {})
   }
 
-  inProcessing(id: any) {
-    return this.http.put(this.url + '/tweets/process_complaint', { id: id });
+  inProcessing(user: any) {
+    return this.http.put(this.url + '/tweets/process_complaint', { user }, {});
   }
 
   isResolved(id: any) {
     return this.http.put(this.url + '/tweets/resolve_complaint', { id: id });
   }
 
-  datareciving(data: any) {
-    console.log(("data from home component " + data));
-    this.Complaints.push(data);
+  // datareciving(data: any) {
+  //   console.log(("data from home component" , data));
+  //   this.Complaints.push(data);
+  // }
+
+  getDataFromService() {
+    console.log(this.Complaints);
   }
 }
 

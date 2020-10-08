@@ -13,6 +13,7 @@
        <td>{{i+1}}</td>
        <td>{{ complaint.text }}</td>
        <td>{{ complaint.user.name }}</td>
+       <td>@{{ complaint.user.screen_name }}</td>
        <td><button class="btn btn-primary" (click)='processing(i)'> Process </button></td>
        <td><button class="btn btn-primary" (click)='resolved(i)'> Resolved </button></td>
      </tr>

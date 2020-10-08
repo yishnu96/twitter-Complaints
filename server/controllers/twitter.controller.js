@@ -77,12 +77,32 @@ module.exports.complaint = function (req, res){
   }
 }
 
+module.exports.fetchingComplaints = function (req, res){
+  ComplaintTweets.find({ is_resolved: false, is_processing: false }, function (err, result){
+    if (err){
+      console.error('Error in fetching complaints tweets');
+      return res.status(500).json({
+        message: "Internal Server Error",
+        status: 500,
+        data: null,
+        error: true
+      });
+    }
+    return res.status(200).json({
+      message: "Tweet Saved After Fetch",
+      status: 200,
+      data: result,
+      error: false
+    });
+  })
+}
+
 module.exports.process = function (req, res){
 
-  if (req.params.id) {
-    const id = req.params.id;
+  const user = req.body.user
+  if (user) {
     ComplaintTweets.find({
-        _id: id,
+        user : user,
         is_resolved: false,
         is_processing: false
       })
@@ -91,13 +111,13 @@ module.exports.process = function (req, res){
             _complaintTweet.is_processing = true;
             _complaintTweet.save()
               .then(data => {
-                clint.post(`statuses/update`,'@'+ data.user.name+' your complaint is in process');
-                // return res.status(200).json({
-                //   message: "Tweet is now processing",
-                //   status: 200,
-                //   data: data,
-                //   error: false
-                // });
+                // clint.post(`statuses/update`,'@'+ data.user.name+' your complaint is in process');
+                return res.status(200).json({
+                  message: "Tweet is now processing",
+                  status: 200,
+                  data: data,
+                  error: false
+                });
               })
               .catch()
           } else {
@@ -133,13 +153,13 @@ module.exports.resolve = function (req, res) {
             _resolveTweet.is_resolved = true;
             _resolveTweet.save()
               .then(data => {
-                clint.post(`statuses/update`,'@'+ data.user.name+' your your complaint has been resolved');
-                // return res.status(200).json({
-                //   message: "Tweet is resolved",
-                //   status: 200,
-                //   data: data,
-                //   error: false
-                // });
+                // clint.post(`statuses/update`,'@'+ data.user.name+' your your complaint has been resolved');
+                return res.status(200).json({
+                  message: "Tweet is resolved",
+                  status: 200,
+                  data: data,
+                  error: false
+                });
               })
               .catch(err => {
                 console.log(err);

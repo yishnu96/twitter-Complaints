@@ -7,6 +7,7 @@ router.get('/showtweets', twitterCtrl.showtweets);
 router.post('/complaint', twitterCtrl.complaint);
 router.put('/process_complaint', twitterCtrl.process);
 router.put('/resolve_complaint', twitterCtrl.resolve);
+router.get('/fetch_complaints', twitterCtrl.fetchingComplaints);
 
 module.exports = router;
 

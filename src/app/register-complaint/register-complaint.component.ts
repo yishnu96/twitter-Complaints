@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { TweetService } from '../shared/services/twitter/tweet.service'
 
 @Component({
@@ -9,13 +9,29 @@ import { TweetService } from '../shared/services/twitter/tweet.service'
 export class RegisterComplaintComponent implements OnInit {
 
   Complaints: any[] = [];
-  constructor(private tweetService: TweetService) { }
+  constructor(private tweetService: TweetService) {
+    // this.Complaints = this.tweetService.Complaints;
 
-  ngOnInit(): void {
+    // console.log(this.Complaints);
+    this.displayComplaints();
+
   }
 
+  ngOnInit(): void { }
+
+  displayComplaints(){
+    this.tweetService.fetchingComplaints().subscribe((res:any)=>{
+      console.log(res);
+      this.Complaints = res.data;
+    },(err)=>{
+      console.log(err);
+    })
+  }
+
+
+
   processing(index: number){
-    this.tweetService.inProcessing(this.Complaints[index].user.id).subscribe();
+    this.tweetService.inProcessing(this.Complaints[index].user).subscribe(res => console.log(res));
   }
 
   resolved(index: number){

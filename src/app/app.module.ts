@@ -13,14 +13,16 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './shared/services';
 import { RegisterComplaintComponent } from './register-complaint/register-complaint.component';
+import { RegisterComplaintModule } from './register-complaint/register-complaint.module';
+import { ResolvedComplaintsComponent } from './resolved-complaints/resolved-complaints.component';
 
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
 }
 
 @NgModule({
-  imports: [BrowserAnimationsModule, HttpClientModule, SharedModule, AppRoutingModule],
-  declarations: [AppComponent, HeaderComponent, HomeComponent, RegisterComplaintComponent],
+  imports: [BrowserAnimationsModule, HttpClientModule, SharedModule, RegisterComplaintModule, AppRoutingModule],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, ResolvedComplaintsComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

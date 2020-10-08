@@ -9,8 +9,7 @@ import { TweetService } from '../shared/services/twitter/tweet.service'
 })
 export class HomeComponent implements OnInit {
 
-  Tweets :any[]= [];
-  Complint: any;
+  Tweets: any[] = [];
   constructor(private tweetService: TweetService) {
     this.displayTweets();
    }
@@ -28,15 +27,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
-  register(index: number) {
-    // this.Complint =
-    // this.tweetService.isComplaint(this.Tweets[index].user.name, this.Tweets[index].text);
-    this.tweetService.isComplaint(this.Tweets[index].user.screen_name, this.Tweets[index].text).subscribe(res => {
-      console.log(res);
-      this.tweetService.datareciving(res);
+    register(index: number) {
+      // this.Complint =
+      // this.tweetService.isComplaint(this.Tweets[index].user.name, this.Tweets[index].text);
+      this.tweetService.isComplaint(this.Tweets[index].user, this.Tweets[index].text).subscribe((res: any) => {
+        console.log(res);
+        this.tweetService.Complaints.push(res.data);
       });
-
+      // this.tweetService.datareciving(this.Complint);
     }
-    // this.tweetService.datareciving(this.Complint);
+
+
   }
