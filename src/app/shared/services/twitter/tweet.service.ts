@@ -21,6 +21,10 @@ export class TweetService {
     return this.http.get(this.url + '/tweets/fetch_complaints');
   }
 
+  displayResolvedComplaints(){
+    return this.http.get(this.url + '/tweets/resolved_complaints');
+  }
+
   // isComplaint(user: any, text: any) {
   //    return this.http.post(this.url + '/tweets/complaint',  user,{} )
   // }

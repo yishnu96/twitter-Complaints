@@ -1,1 +1,20 @@
 <p>resolved-complaints works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl. No</th>
+      <th>Tweets</th>
+      <th>UserID</th>
+    </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let tweet of resolvedTweets; let i = index" >
+       <td>{{i+1}}</td>
+       <td>{{ tweet.text }}</td>
+       <td>{{ tweet.user.name }}</td>
+       <td>@{{ tweet.user.screen_name }}</td>
+       <td> Resolved on time </td>
+       <td><button class="btn btn-primary" > ReActive </button></td>
+     </tr>
+   </tbody>
+</table>

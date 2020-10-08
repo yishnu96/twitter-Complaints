@@ -10,6 +10,9 @@ const clint = new Twitter({
   access_token_secret: '094Qvw7jD3oZ8Hhy6Da3pHlapfyQfg9EpmvWsTHmehWDT',
 });
 
+
+
+// ************ Display tweets **********//
 module.exports.showtweets = function(req, res){
   clint.get('search/tweets', {
     q: 'to:@airtelindia',
@@ -35,6 +38,52 @@ module.exports.showtweets = function(req, res){
   })
 }
 
+
+//****** Processing or just complaints Display ****** */
+module.exports.fetchingComplaints = function (req, res){
+  ComplaintTweets.find({ is_resolved: false, is_processing: false }, function (err, result){
+    if (err){
+      console.error('Error in fetching complaints tweets');
+      return res.status(500).json({
+        message: "Internal Server Error",
+        status: 500,
+        data: null,
+        error: true
+      });
+    }
+    return res.status(200).json({
+      message: "Tweet Saved After Fetch",
+      status: 200,
+      data: result,
+      error: false
+    });
+  })
+}
+
+
+/*************** Resolved Complaints ************** */
+module.exports.resolvedComplaints = function (req, res){
+  ComplaintTweets.find({ is_resolved: true, is_processing: true }, function (err, result){
+    if (err){
+      console.error('Error in fetching complaints tweets');
+      return res.status(500).json({
+        message: "Internal Server Error",
+        status: 500,
+        data: null,
+        error: true
+      });
+    }
+    return res.status(200).json({
+      message: "Tweet Saved After Fetch",
+      status: 200,
+      data: result,
+      error: false
+    });
+  })
+}
+
+
+/***   Sending Complaints to database   ****/
 module.exports.complaint = function (req, res){
   // console.log("backend" + req.body)
   const user = req.body.user;
@@ -77,25 +126,6 @@ module.exports.complaint = function (req, res){
   }
 }
 
-module.exports.fetchingComplaints = function (req, res){
-  ComplaintTweets.find({ is_resolved: false, is_processing: false }, function (err, result){
-    if (err){
-      console.error('Error in fetching complaints tweets');
-      return res.status(500).json({
-        message: "Internal Server Error",
-        status: 500,
-        data: null,
-        error: true
-      });
-    }
-    return res.status(200).json({
-      message: "Tweet Saved After Fetch",
-      status: 200,
-      data: result,
-      error: false
-    });
-  })
-}
 
 module.exports.process = function (req, res){
 

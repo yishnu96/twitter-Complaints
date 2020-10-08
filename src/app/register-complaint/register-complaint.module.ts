@@ -10,6 +10,6 @@ import { RegisterComplaintRoutingModule } from './register-complaint-routing.mod
     CommonModule,
     RegisterComplaintRoutingModule
   ],
-  exports : [ RegisterComplaintRoutingModule]
+  exports : [ RegisterComplaintRoutingModule, RegisterComplaintComponent]
 })
 export class RegisterComplaintModule { }

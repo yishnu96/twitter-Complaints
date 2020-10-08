@@ -1,5 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
-import { TweetService } from '../shared/services/twitter/tweet.service'
+import { TweetService } from '../shared/services/twitter/tweet.service';
 
 @Component({
   selector: 'app-register-complaint',
@@ -25,7 +25,7 @@ export class RegisterComplaintComponent implements OnInit {
       this.Complaints = res.data;
     },(err)=>{
       console.log(err);
-    })
+    });
   }
 
 

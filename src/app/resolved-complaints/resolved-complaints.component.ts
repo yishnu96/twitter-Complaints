@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TweetService } from '../shared/services/twitter/tweet.service';
 
 @Component({
   selector: 'app-resolved-complaints',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResolvedComplaintsComponent implements OnInit {
 
-  constructor() { }
+  resolvedTweets: any[] = [];
+  constructor(private tweetService: TweetService) {
+    this.displayResolvedTweets();
+  }
 
   ngOnInit(): void {
   }
 
+  displayResolvedTweets(){
+    this.tweetService.displayResolvedComplaints().subscribe((res:any)=>{
+      console.log(res);
+      this.resolvedTweets = res.data;
+    }, (err) => {
+      console.log(err);
+    });
+  }
 }

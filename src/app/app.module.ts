@@ -15,13 +15,14 @@ import { AuthService } from './shared/services';
 import { RegisterComplaintComponent } from './register-complaint/register-complaint.component';
 import { RegisterComplaintModule } from './register-complaint/register-complaint.module';
 import { ResolvedComplaintsComponent } from './resolved-complaints/resolved-complaints.component';
+import { ResolvedComplaintsModule } from './resolved-complaints/resolved-complaints.module';
 
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
 }
 
 @NgModule({
-  imports: [BrowserAnimationsModule, HttpClientModule, SharedModule, RegisterComplaintModule, AppRoutingModule],
+  imports: [BrowserAnimationsModule, HttpClientModule, SharedModule, RegisterComplaintModule,ResolvedComplaintsModule, AppRoutingModule],
   declarations: [AppComponent, HeaderComponent, HomeComponent, ResolvedComplaintsComponent],
   providers: [
     {
