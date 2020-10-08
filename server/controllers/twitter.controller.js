@@ -127,7 +127,7 @@ module.exports.complaint = function (req, res){
 }
 
 
-module.exports.process = function (req, res){
+module.exports.process = async function (req, res){
 
   const user = req.body.user
   if (user) {
@@ -149,14 +149,22 @@ module.exports.process = function (req, res){
                   error: false
                 });
               })
-              .catch()
+              .catch(err => {
+                console.log(err);
+                return res.status(500).json({
+                  message: "Internal Server Error",
+                  status: 500,
+                  data: null,
+                  error: true
+                 })
+              })
           } else {
             return res.status(200).json({
               message: "Tweet Complaint Not Found / Or already Processed",
               status: 200,
               data: null,
               error: false
-            });
+            })
           }
         })
   }else{
@@ -169,7 +177,7 @@ module.exports.process = function (req, res){
   }
 }
 
-module.exports.resolve = function (req, res) {
+module.exports.resolve =async function (req, res) {
 
   if (req.params.id) {
     const id = req.params.id;
@@ -216,5 +224,40 @@ module.exports.resolve = function (req, res) {
       data: null,
       error: true
     });
+  }
+}
+
+module.exports.trackTweets = function (req, res){
+  if (req.params.id) {
+    const id = req.params.id;
+    ComplantTweets.find({
+        'user.id': id
+      })
+      .then(_tweets => {
+        if (_tweets.length) {
+          return res.status(200).json({
+            message: "All Tweets of User",
+            status: 200,
+            data: _tweets,
+            error: false
+          });
+        } else {
+          return res.status(200).json({
+            message: "No Tweet found for user",
+            status: 200,
+            data: _tweets,
+            error: false
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        return res.status(500).json({
+          message: "Internal Server Error",
+          status: 500,
+          data: null,
+          error: true
+        });
+      })
   }
 }

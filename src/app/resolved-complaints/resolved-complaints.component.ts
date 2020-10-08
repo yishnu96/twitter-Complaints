@@ -14,10 +14,11 @@ export class ResolvedComplaintsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
-  displayResolvedTweets(){
-    this.tweetService.displayResolvedComplaints().subscribe((res:any)=>{
+  displayResolvedTweets() {
+    this.tweetService.displayResolvedComplaints().subscribe((res: any) => {
       console.log(res);
       this.resolvedTweets = res.data;
     }, (err) => {
