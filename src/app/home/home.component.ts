@@ -30,6 +30,8 @@ export class HomeComponent implements OnInit {
     register(index: number) {
       // this.Complint =
       // this.tweetService.isComplaint(this.Tweets[index].user.name, this.Tweets[index].text);
+      console.log(this.Tweets[index].user);
+
       this.tweetService.isComplaint(this.Tweets[index].user, this.Tweets[index].text).subscribe((res: any) => {
         console.log(res);
         this.tweetService.Complaints.push(res.data);

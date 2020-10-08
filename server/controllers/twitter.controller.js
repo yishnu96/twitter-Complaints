@@ -131,7 +131,7 @@ module.exports.process = async function (req, res){
 
   const user = req.body.user
   if (user) {
-    ComplaintTweets.find({
+    ComplaintTweets.findOne({
         user : user,
         is_resolved: false,
         is_processing: false
@@ -179,10 +179,10 @@ module.exports.process = async function (req, res){
 
 module.exports.resolve =async function (req, res) {
 
-  if (req.params.id) {
-    const id = req.params.id;
-    ComplaintTweets.find({
-        _id: id,
+  const user = req.body.user
+  if (user) {
+    ComplaintTweets.findOne({
+        user: user,
         is_resolved: false,
         is_processing: true
       })
@@ -230,7 +230,7 @@ module.exports.resolve =async function (req, res) {
 module.exports.trackTweets = function (req, res){
   if (req.params.id) {
     const id = req.params.id;
-    ComplantTweets.find({
+    ComplantTweets.findOne({
         'user.id': id
       })
       .then(_tweets => {

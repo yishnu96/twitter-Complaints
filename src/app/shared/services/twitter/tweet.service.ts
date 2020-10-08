@@ -37,8 +37,8 @@ export class TweetService {
     return this.http.put(this.url + '/tweets/process_complaint', { user }, {});
   }
 
-  isResolved(id: any) {
-    return this.http.put(this.url + '/tweets/resolve_complaint', { id: id });
+  isResolved(user: any) {
+    return this.http.put(this.url + '/tweets/resolve_complaint', { user });
   }
 
   // datareciving(data: any) {

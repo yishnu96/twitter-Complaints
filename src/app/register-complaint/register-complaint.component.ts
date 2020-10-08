@@ -30,12 +30,12 @@ export class RegisterComplaintComponent implements OnInit {
 
 
 
-  processing(index: number){
+  processing(index: number) {
     this.tweetService.inProcessing(this.Complaints[index].user).subscribe(res => console.log(res));
   }
 
-  resolved(index: number){
-    this.tweetService.isResolved(this.Complaints[index].user.id).subscribe();
+  resolved(index: number) {
+    this.tweetService.isResolved(this.Complaints[index].user).subscribe(res => console.log(res));
   }
 
 }
