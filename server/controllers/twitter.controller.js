@@ -176,6 +176,7 @@ module.exports.process = async function (req, res){
   }
 }
 
+/********  Complaint Solved           ***************** */
 module.exports.resolve =async function (req, res) {
   const user = req.body.user
   if (user) {
@@ -189,7 +190,8 @@ module.exports.resolve =async function (req, res) {
             _resolveTweet.is_resolved = true;
             _resolveTweet.save()
               .then(data => {
-                // clint.post(`statuses/update`,'@'+ data.user.name+' your your complaint has been resolved');
+                // clint.post(`statuses/update`,'@' + data.user.name + ' your your complaint has been resolved');
+
                 return res.status(200).json({
                   message: "Tweet is resolved",
                   status: 200,
@@ -225,6 +227,7 @@ module.exports.resolve =async function (req, res) {
   }
 }
 
+/**** ****  If User Wants to re-active complaint ** */
 module.exports.reactive = function(req, res) {
   const user = req.body.user
   if (user) {
@@ -238,7 +241,7 @@ module.exports.reactive = function(req, res) {
             _reactive.is_resolved = false;
             _reactive.save()
               .then(data => {
-                // clint.post(`statuses/update`,'@'+ data.user.name+' your your complaint has been resolved');
+                // clint.post(`statuses/update`,'@'+ data.user.name + ' your your complaint has been resolved');
                 return res.status(200).json({
                   message: "Tweet is reactive",
                   status: 200,
@@ -275,10 +278,13 @@ module.exports.reactive = function(req, res) {
 }
 
 module.exports.trackTweets = function (req, res){
-  if (req.params.id) {
-    const id = req.params.id;
+
+  const user = req.body.user;
+
+  if (user) {
     ComplantTweets.findOne({
-        'user.id': id
+        user: user
+
       })
       .then(_tweets => {
         if (_tweets.length) {

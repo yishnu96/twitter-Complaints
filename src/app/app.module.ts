@@ -16,13 +16,13 @@ import { RegisterComplaintComponent } from './register-complaint/register-compla
 import { RegisterComplaintModule } from './register-complaint/register-complaint.module';
 import { ResolvedComplaintsComponent } from './resolved-complaints/resolved-complaints.component';
 import { ResolvedComplaintsModule } from './resolved-complaints/resolved-complaints.module';
-
+import { ChatBoxModule } from './chat-box/chat-box.module';
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
 }
 
 @NgModule({
-  imports: [BrowserAnimationsModule, HttpClientModule, SharedModule, RegisterComplaintModule,ResolvedComplaintsModule, AppRoutingModule],
+  imports: [BrowserAnimationsModule, HttpClientModule, SharedModule, RegisterComplaintModule,ResolvedComplaintsModule,ChatBoxModule, AppRoutingModule ],
   declarations: [AppComponent, HeaderComponent, HomeComponent, ResolvedComplaintsComponent],
   providers: [
     {

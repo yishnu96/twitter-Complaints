@@ -6,6 +6,8 @@
       <th>Sl. No</th>
       <th>Tweets</th>
       <th>UserID</th>
+      <th>User Name</th>
+      <th routerLink='/chat'>Chat</th>
     </tr>
    </thead>
    <tbody>
@@ -16,6 +18,10 @@
        <td>@{{ complaint.user.screen_name }}</td>
        <td><button class="btn btn-primary" (click)='processing(i)'> Process </button></td>
        <td><button class="btn btn-primary" (click)='resolved(i)'> Resolved </button></td>
+       <td><router-outlet></router-outlet></td>
      </tr>
    </tbody>
 </table>
+
+
+<td><router-outlet></router-outlet></td>
