@@ -14,7 +14,7 @@ export class ResolvedComplaintsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   displayResolvedTweets() {
@@ -25,4 +25,12 @@ export class ResolvedComplaintsComponent implements OnInit {
       console.log(err);
     });
   }
+
+  reactiveComplaints(index: number){
+    this.tweetService.reactive(this.resolvedTweets[index].user).subscribe(res => {
+      console.log(res);
+    });
+    }
 }
+
+

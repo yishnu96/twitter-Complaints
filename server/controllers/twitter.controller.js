@@ -126,9 +126,8 @@ module.exports.complaint = function (req, res){
   }
 }
 
-
+/*****  The complaint is on Process  ***** */
 module.exports.process = async function (req, res){
-
   const user = req.body.user
   if (user) {
     ComplaintTweets.findOne({
@@ -178,7 +177,6 @@ module.exports.process = async function (req, res){
 }
 
 module.exports.resolve =async function (req, res) {
-
   const user = req.body.user
   if (user) {
     ComplaintTweets.findOne({
@@ -194,6 +192,55 @@ module.exports.resolve =async function (req, res) {
                 // clint.post(`statuses/update`,'@'+ data.user.name+' your your complaint has been resolved');
                 return res.status(200).json({
                   message: "Tweet is resolved",
+                  status: 200,
+                  data: data,
+                  error: false
+                });
+              })
+              .catch(err => {
+                console.log(err);
+                return res.status(500).json({
+                  message: "Internal Server Error",
+                  status: 500,
+                  data: null,
+                  error: true
+                })
+              });
+          } else {
+            return res.status(200).json({
+              message: "Tweet Complaint Not Found / Or already Resolved",
+              status: 200,
+              data: null,
+              error: false
+            });
+          }
+        })
+  }else{
+    return res.status(400).json({
+      message: "Data required",
+      status: 400,
+      data: null,
+      error: true
+    });
+  }
+}
+
+module.exports.reactive = function(req, res) {
+  const user = req.body.user
+  if (user) {
+    ComplaintTweets.findOne({
+        user: user,
+        is_resolved: true,
+        is_processing: true
+      })
+      .then(_reactive => {
+          if (_reactive) {
+            _reactive.is_resolved = false;
+            _reactive.save()
+              .then(data => {
+                // clint.post(`statuses/update`,'@'+ data.user.name+' your your complaint has been resolved');
+                return res.status(200).json({
+                  message: "Tweet is reactive",
                   status: 200,
                   data: data,
                   error: false

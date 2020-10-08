@@ -14,7 +14,7 @@
        <td>{{ tweet.user.name }}</td>
        <td>@{{ tweet.user.screen_name }}</td>
        <td> Resolved on time </td>
-       <td><button class="btn btn-primary" > ReActive </button></td>
+       <td><button class="btn btn-primary" (click)='reactiveComplaints(i)' > ReActive </button></td>
      </tr>
    </tbody>
 </table>

@@ -12,6 +12,7 @@ router.post('/complaint', twitterCtrl.complaint);
 
 router.put('/process_complaint', twitterCtrl.process);
 router.put('/resolve_complaint', twitterCtrl.resolve);
+router.put('/reactive', twitterCtrl.reactive);
 
 
 module.exports = router;

@@ -25,6 +25,10 @@ export class TweetService {
     return this.http.get(this.url + '/tweets/resolved_complaints');
   }
 
+  reactive(user: any) {
+    return this.http.put(this.url + '/tweets//reactive', {user}, {});
+  }
+
   // isComplaint(user: any, text: any) {
   //    return this.http.post(this.url + '/tweets/complaint',  user,{} )
   // }
@@ -40,6 +44,7 @@ export class TweetService {
   isResolved(user: any) {
     return this.http.put(this.url + '/tweets/resolve_complaint', { user });
   }
+
 
   // datareciving(data: any) {
   //   console.log(("data from home component" , data));
