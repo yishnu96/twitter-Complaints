@@ -24,6 +24,8 @@
     "@angular/platform-browser": "^9.1.4",
     "@angular/platform-browser-dynamic": "^9.1.4",
     "@angular/router": "^9.1.4",
+    "@tensorflow/tfjs": "^2.6.0",
+    "@tensorflow/tfjs-node": "^2.6.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.5.2",
