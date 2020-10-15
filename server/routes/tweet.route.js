@@ -2,6 +2,7 @@ const express = require('express');
 const twitterCtrl = require('../controllers/twitter.controller');
 const router = express.Router();
 const ComplaintTweets = require('../models/twitter.model')
+const nlpCtrl = require('../controllers/npl.controller')
 
 router.get('/showtweets', twitterCtrl.showtweets);
 router.get('/fetch_complaints', twitterCtrl.fetchingComplaints);
