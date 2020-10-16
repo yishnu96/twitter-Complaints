@@ -1,15 +1,9 @@
 const ComplaintTweets = require('../models/twitter.model')
 const Twitter = require('twit');
+const manager = require('./npl.controller');
+const env = require('../config/twitterEnv');
 
-const clint = new Twitter({
-  subdomain: "api",
-  version: "1.1",
-  consumer_key: 'OKIkoZr0ywVN3btEyIYyOjqeD',
-  consumer_secret: '47AUbZdTM6lOiZsd7a1OFM193qD2n2TQ9020v452zpJNP9rdbX',
-  access_token: '2311562004-7SK3Tb9BS4QFFNxFXaymTBBF8VSblFgI3j8WGij',
-  access_token_secret: '094Qvw7jD3oZ8Hhy6Da3pHlapfyQfg9EpmvWsTHmehWDT',
-});
-
+const clint = new Twitter(env);
 
 
 // ************ Display tweets **********//
@@ -32,7 +26,7 @@ module.exports.showtweets = function(req, res){
     return res.status(200).json({
       message: "All the tweets",
       status: 200,
-      data: data.statuses,
+      data: data.statuses ,
       error: false
     })
   })
@@ -88,6 +82,16 @@ module.exports.complaint = function (req, res){
   // console.log("backend" + req.body)
   const user = req.body.user;
   const text = req.body.text;
+
+  // Edit the function
+  (async() => {
+      await manager.train();
+      manager.save();
+      const response = await manager.process('en', req.body.text );
+      console.log(response);
+  })();
+
+
   if (user || text) {
     let newTweet = new ComplaintTweets({
       text: text,

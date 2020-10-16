@@ -2,27 +2,38 @@ const { NlpManager } = require('node-nlp');
 
 const manager = new NlpManager({ languages: ['en'], forceNER: true });
 // Adds the utterances and intents for the NLP
-manager.addDocument('en', 'goodbye for now', 'greetings.bye');
-manager.addDocument('en', 'bye bye take care', 'greetings.bye');
-manager.addDocument('en', 'okay see you later', 'greetings.bye');
-manager.addDocument('en', 'bye for now', 'greetings.bye');
-manager.addDocument('en', 'i must go', 'greetings.bye');
-manager.addDocument('en', 'hello', 'greetings.hello');
-manager.addDocument('en', 'hi', 'greetings.hello');
-manager.addDocument('en', 'howdy', 'greetings.hello');
+manager.addDocument('en', 'I am getting frustrated', 'complaint.anger');
+manager.addDocument('en', 'problem', 'greetings.hello');
+manager.addDocument('en', 'customers complain', 'greetings.hello');
+manager.addDocument('en', 'have major issues', 'greetings.hello');
+manager.addDocument('en', 'connectivity issue', 'greetings.hello');
+manager.addDocument('en', 'issue', 'greetings.hello');
+manager.addDocument('en', 'issues', 'greetings.hello');
+manager.addDocument('en', 'not', 'greetings.hello');
+manager.addDocument('en', 'no', 'greetings.hello');
+manager.addDocument('en', 'waiting', 'complaint.problem');
+manager.addDocument('en', 'service request no', 'greetings.hello');
+manager.addDocument('en', 'complaint', 'greetings.hello');
+manager.addDocument('en', 'slow', 'greetings.hello');
+manager.addDocument('en', 'request number', 'greetings.hello');
+manager.addDocument('en', 'Worst', 'greetings.hello');
+manager.addDocument('en', 'application No.', 'complaint.trying');
+
+
 
 // Train also the NLG
-manager.addAnswer('en', 'greetings.bye', 'Till next time');
-manager.addAnswer('en', 'greetings.bye', 'see you soon!');
-manager.addAnswer('en', 'greetings.hello', 'Hey there!');
-manager.addAnswer('en', 'greetings.hello', 'Greetings!');
+manager.addAnswer('en', 'greetings.hello', 'Your Complaint has been Registered ');
+manager.addAnswer('en', 'complaint.anger', 'Sorry Of your Inconvinence. We are trying to resolve ');
+manager.addAnswer('en', 'complaint.problem', 'We are trying to resolve As soon as possible');
+manager.addAnswer('en', 'complaint.trying', 'We will try to resolve you problem ASAP');
+
 
 // Train and save the model.
-(async() => {
-    await manager.train();
-    manager.save();
-    const response = await manager.process('en', 'I should go now');
-    console.log(response);
-})();
+// (async() => {
+//     await manager.train();
+//     manager.save();
+//     const response = await manager.process('en', 'I should go now');
+//     console.log(response);
+// })();
 
 module.exports = manager;

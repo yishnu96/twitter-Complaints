@@ -34,83 +34,153 @@
           "useStemDict": true
         },
         "stemDict": {
-          "for,goodby,now": {
-            "intent": "greetings.bye",
+          "am,frustrat,get,i": {
+            "intent": "complaint.anger",
             "domain": "default"
           },
-          "bye,care,take": {
-            "intent": "greetings.bye",
-            "domain": "default"
-          },
-          "later,okay,see,you": {
-            "intent": "greetings.bye",
-            "domain": "default"
-          },
-          "bye,for,now": {
-            "intent": "greetings.bye",
-            "domain": "default"
-          },
-          "go,i,must": {
-            "intent": "greetings.bye",
-            "domain": "default"
-          },
-          "hello": {
+          "problem": {
             "intent": "greetings.hello",
             "domain": "default"
           },
-          "hi": {
+          "complain,custom": {
             "intent": "greetings.hello",
             "domain": "default"
           },
-          "howdi": {
+          "have,issu,major": {
             "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "connect,issu": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "issu": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "not": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "no": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "wait": {
+            "intent": "complaint.problem",
+            "domain": "default"
+          },
+          "no,request,servic": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "complaint": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "slow": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "number,request": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "worst": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "applic,no": {
+            "intent": "complaint.trying",
             "domain": "default"
           }
         },
         "intentDict": {
-          "greetings.bye": "default",
-          "greetings.hello": "default"
+          "complaint.anger": "default",
+          "greetings.hello": "default",
+          "complaint.problem": "default",
+          "complaint.trying": "default"
         },
         "sentences": [
           {
             "domain": "default",
-            "utterance": "goodbye for now",
-            "intent": "greetings.bye"
+            "utterance": "I am getting frustrated",
+            "intent": "complaint.anger"
           },
           {
             "domain": "default",
-            "utterance": "bye bye take care",
-            "intent": "greetings.bye"
-          },
-          {
-            "domain": "default",
-            "utterance": "okay see you later",
-            "intent": "greetings.bye"
-          },
-          {
-            "domain": "default",
-            "utterance": "bye for now",
-            "intent": "greetings.bye"
-          },
-          {
-            "domain": "default",
-            "utterance": "i must go",
-            "intent": "greetings.bye"
-          },
-          {
-            "domain": "default",
-            "utterance": "hello",
+            "utterance": "problem",
             "intent": "greetings.hello"
           },
           {
             "domain": "default",
-            "utterance": "hi",
+            "utterance": "customers complain",
             "intent": "greetings.hello"
           },
           {
             "domain": "default",
-            "utterance": "howdy",
+            "utterance": "have major issues",
             "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "connectivity issue",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "issue",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "issues",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "not",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "no",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "waiting",
+            "intent": "complaint.problem"
+          },
+          {
+            "domain": "default",
+            "utterance": "service request no",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "complaint",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "slow",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "request number",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "Worst",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "application No.",
+            "intent": "complaint.trying"
           }
         ],
         "domains": {
@@ -127,97 +197,130 @@
               "log": true
             },
             "features": {
-              "goodby": 1,
-              "for": 1,
-              "now": 1,
-              "bye": 1,
-              "take": 1,
-              "care": 1,
-              "okay": 1,
-              "see": 1,
-              "you": 1,
-              "later": 1,
               "i": 1,
-              "must": 1,
-              "go": 1,
-              "hello": 1,
-              "hi": 1,
-              "howdi": 1
+              "am": 1,
+              "get": 1,
+              "frustrat": 1,
+              "problem": 1,
+              "custom": 1,
+              "complain": 1,
+              "have": 1,
+              "major": 1,
+              "issu": 1,
+              "connect": 1,
+              "not": 1,
+              "no": 1,
+              "wait": 1,
+              "servic": 1,
+              "request": 1,
+              "complaint": 1,
+              "slow": 1,
+              "number": 1,
+              "worst": 1,
+              "applic": 1
             },
             "intents": {
-              "greetings.bye": 1,
-              "greetings.hello": 1
+              "complaint.anger": 1,
+              "greetings.hello": 1,
+              "complaint.problem": 1,
+              "complaint.trying": 1
             },
             "intentFeatures": {
-              "greetings.bye": {
-                "goodby": 1,
-                "for": 1,
-                "now": 1,
-                "bye": 1,
-                "take": 1,
-                "care": 1,
-                "okay": 1,
-                "see": 1,
-                "you": 1,
-                "later": 1,
+              "complaint.anger": {
                 "i": 1,
-                "must": 1,
-                "go": 1
+                "am": 1,
+                "get": 1,
+                "frustrat": 1
               },
               "greetings.hello": {
-                "hello": 1,
-                "hi": 1,
-                "howdi": 1
+                "problem": 1,
+                "custom": 1,
+                "complain": 1,
+                "have": 1,
+                "major": 1,
+                "issu": 1,
+                "connect": 1,
+                "not": 1,
+                "no": 1,
+                "servic": 1,
+                "request": 1,
+                "complaint": 1,
+                "slow": 1,
+                "number": 1,
+                "worst": 1
+              },
+              "complaint.problem": {
+                "wait": 1
+              },
+              "complaint.trying": {
+                "applic": 1,
+                "no": 1
               }
             },
             "featuresToIntent": {
-              "goodby": [
-                "greetings.bye"
-              ],
-              "for": [
-                "greetings.bye"
-              ],
-              "now": [
-                "greetings.bye"
-              ],
-              "bye": [
-                "greetings.bye"
-              ],
-              "take": [
-                "greetings.bye"
-              ],
-              "care": [
-                "greetings.bye"
-              ],
-              "okay": [
-                "greetings.bye"
-              ],
-              "see": [
-                "greetings.bye"
-              ],
-              "you": [
-                "greetings.bye"
-              ],
-              "later": [
-                "greetings.bye"
-              ],
               "i": [
-                "greetings.bye"
+                "complaint.anger"
               ],
-              "must": [
-                "greetings.bye"
+              "am": [
+                "complaint.anger"
               ],
-              "go": [
-                "greetings.bye"
+              "get": [
+                "complaint.anger"
               ],
-              "hello": [
+              "frustrat": [
+                "complaint.anger"
+              ],
+              "problem": [
                 "greetings.hello"
               ],
-              "hi": [
+              "custom": [
                 "greetings.hello"
               ],
-              "howdi": [
+              "complain": [
                 "greetings.hello"
+              ],
+              "have": [
+                "greetings.hello"
+              ],
+              "major": [
+                "greetings.hello"
+              ],
+              "issu": [
+                "greetings.hello"
+              ],
+              "connect": [
+                "greetings.hello"
+              ],
+              "not": [
+                "greetings.hello"
+              ],
+              "no": [
+                "greetings.hello",
+                "complaint.trying"
+              ],
+              "servic": [
+                "greetings.hello"
+              ],
+              "request": [
+                "greetings.hello"
+              ],
+              "complaint": [
+                "greetings.hello"
+              ],
+              "slow": [
+                "greetings.hello"
+              ],
+              "number": [
+                "greetings.hello"
+              ],
+              "worst": [
+                "greetings.hello"
+              ],
+              "wait": [
+                "complaint.problem"
+              ],
+              "applic": [
+                "complaint.trying"
               ]
             },
             "neuralNetwork": {
@@ -233,89 +336,161 @@
                 "log": true
               },
               "features": [
-                "goodby",
-                "for",
-                "now",
-                "bye",
-                "take",
-                "care",
-                "okay",
-                "see",
-                "you",
-                "later",
                 "i",
-                "must",
-                "go",
-                "hello",
-                "hi",
-                "howdi",
+                "am",
+                "get",
+                "frustrat",
+                "problem",
+                "custom",
+                "complain",
+                "have",
+                "major",
+                "issu",
+                "connect",
+                "not",
+                "no",
+                "wait",
+                "servic",
+                "request",
+                "complaint",
+                "slow",
+                "number",
+                "worst",
+                "applic",
                 "nonefeature"
               ],
               "intents": [
-                "greetings.bye",
+                "complaint.anger",
                 "greetings.hello",
+                "complaint.problem",
+                "complaint.trying",
                 "None"
               ],
               "perceptrons": [
                 [
-                  3.8025848865509033,
-                  3.9563980102539062,
-                  3.9563980102539062,
-                  4.022249221801758,
-                  3.871980905532837,
-                  3.871980905532837,
-                  2.9545509815216064,
-                  2.9545509815216064,
-                  2.9545509815216064,
-                  2.9545509815216064,
-                  3.9413552284240723,
-                  3.9413552284240723,
-                  3.9413552284240723,
-                  -2.459601402282715,
-                  -2.453923463821411,
-                  -2.4477386474609375,
-                  -2.4410507678985596,
-                  2.459665103433471
+                  3.516751289367676,
+                  3.516751289367676,
+                  3.516751289367676,
+                  3.516751289367676,
+                  -0.29682019352912903,
+                  -0.21061430871486664,
+                  -0.21061430871486664,
+                  -0.10858707129955292,
+                  -0.10858707129955292,
+                  -0.49549609422683716,
+                  -0.10662191361188889,
+                  -0.26800405979156494,
+                  -0.36456042528152466,
+                  -0.2598700523376465,
+                  -0.08059635758399963,
+                  -0.23538236320018768,
+                  -0.2502604126930237,
+                  -0.24314352869987488,
+                  -0.14018230140209198,
+                  -0.23610597848892212,
+                  -0.07925128936767578,
+                  -0.23215006291866302,
+                  0.21870943127559478
                 ],
                 [
-                  -1.6328288316726685,
-                  -2.1340417861938477,
-                  -2.1340417861938477,
-                  -2.301002264022827,
-                  -1.799789309501648,
-                  -1.799789309501648,
-                  -1.4755080938339233,
-                  -1.4755080938339233,
-                  -1.4755080938339233,
-                  -1.4755080938339233,
-                  -1.9666719436645508,
-                  -1.9666719436645508,
-                  -1.9666719436645508,
-                  8.295953750610352,
-                  8.301239967346191,
-                  8.275633811950684,
-                  -5.688122749328613,
-                  5.905276935539851
+                  -2.328967332839966,
+                  -2.328967332839966,
+                  -2.328967332839966,
+                  -2.328967332839966,
+                  4.9980878829956055,
+                  2.489776611328125,
+                  2.489776611328125,
+                  -0.0021338770166039467,
+                  -0.0021338770166039467,
+                  4.971989631652832,
+                  0.005053679458796978,
+                  5.001835823059082,
+                  4.255283832550049,
+                  -9.317789077758789,
+                  -1.0527620315551758,
+                  1.9010708332061768,
+                  4.9754414558410645,
+                  4.97650146484375,
+                  2.961294412612915,
+                  4.972200870513916,
+                  -13.30462646484375,
+                  -9.288497924804688,
+                  9.322400461780505
                 ],
                 [
-                  -0.541685163974762,
-                  -0.7201507687568665,
-                  -0.7201507687568665,
-                  -0.779670000076294,
-                  -0.601204514503479,
-                  -0.601204514503479,
-                  -0.4955962300300598,
-                  -0.4955962300300598,
-                  -0.4955962300300598,
-                  -0.4955962300300598,
-                  -0.6605581045150757,
-                  -0.6605581045150757,
-                  -0.6605581045150757,
-                  -1.8888578414916992,
-                  -1.8759384155273438,
-                  -1.8626952171325684,
-                  12.053886413574219,
-                  1.9734621497936955
+                  -0.293622225522995,
+                  -0.293622225522995,
+                  -0.293622225522995,
+                  -0.293622225522995,
+                  -1.1736247539520264,
+                  -0.587203323841095,
+                  -0.587203323841095,
+                  -0.15031233429908752,
+                  -0.15031233429908752,
+                  -1.1743929386138916,
+                  -0.20267094671726227,
+                  -1.1731997728347778,
+                  -1.1732031106948853,
+                  13.10692310333252,
+                  -0.19471995532512665,
+                  -0.6961049437522888,
+                  -1.1744697093963623,
+                  -1.174331545829773,
+                  -0.4856932461261749,
+                  -1.1741474866867065,
+                  -0.31970080733299255,
+                  -1.1739393472671509,
+                  1.174467024604999
+                ],
+                [
+                  -0.15623463690280914,
+                  -0.15623463690280914,
+                  -0.15623463690280914,
+                  -0.15623463690280914,
+                  -0.33894187211990356,
+                  -0.23017185926437378,
+                  -0.23017185926437378,
+                  -0.10125252604484558,
+                  -0.10125252604484558,
+                  -0.49664342403411865,
+                  -0.11167153716087341,
+                  -0.3185544013977051,
+                  1.0921149253845215,
+                  -0.2167854756116867,
+                  -1.5784984827041626,
+                  -1.609976053237915,
+                  -0.17164354026317596,
+                  -0.16742637753486633,
+                  -0.020920978859066963,
+                  -0.16432605683803558,
+                  13.811321258544922,
+                  -0.35503917932510376,
+                  -0.8005338688585794
+                ],
+                [
+                  -0.30683577060699463,
+                  -0.30683577060699463,
+                  -0.30683577060699463,
+                  -0.30683577060699463,
+                  -1.168694019317627,
+                  -0.5921590924263,
+                  -0.5921590924263,
+                  -0.17153799533843994,
+                  -0.17153799533843994,
+                  -1.1787090301513672,
+                  -0.2267509549856186,
+                  -1.1684633493423462,
+                  -1.1684813499450684,
+                  -1.1681104898452759,
+                  -0.1266821324825287,
+                  -0.6529954075813293,
+                  -1.1678545475006104,
+                  -1.1675686836242676,
+                  -0.515559196472168,
+                  -1.1671981811523438,
+                  -0.19738194346427917,
+                  13.112690925598145,
+                  1.1687418156506095
                 ]
               ]
             }
@@ -327,35 +502,67 @@
     "extraSentences": [
       [
         "en",
-        "goodbye for now"
+        "I am getting frustrated"
       ],
       [
         "en",
-        "bye bye take care"
+        "problem"
       ],
       [
         "en",
-        "okay see you later"
+        "customers complain"
       ],
       [
         "en",
-        "bye for now"
+        "have major issues"
       ],
       [
         "en",
-        "i must go"
+        "connectivity issue"
       ],
       [
         "en",
-        "hello"
+        "issue"
       ],
       [
         "en",
-        "hi"
+        "issues"
       ],
       [
         "en",
-        "howdy"
+        "not"
+      ],
+      [
+        "en",
+        "no"
+      ],
+      [
+        "en",
+        "waiting"
+      ],
+      [
+        "en",
+        "service request no"
+      ],
+      [
+        "en",
+        "complaint"
+      ],
+      [
+        "en",
+        "slow"
+      ],
+      [
+        "en",
+        "request number"
+      ],
+      [
+        "en",
+        "Worst"
+      ],
+      [
+        "en",
+        "application No."
       ]
     ]
   },
@@ -373,20 +580,24 @@
     },
     "responses": {
       "en": {
-        "greetings.bye": [
-          {
-            "answer": "Till next time"
-          },
-          {
-            "answer": "see you soon!"
-          }
-        ],
         "greetings.hello": [
           {
-            "answer": "Hey there!"
-          },
+            "answer": "Your Complaint has been Registered "
+          }
+        ],
+        "complaint.anger": [
           {
-            "answer": "Greetings!"
+            "answer": "Sorry Of your Inconvinence. We are trying to resolve "
+          }
+        ],
+        "complaint.problem": [
+          {
+            "answer": "We are trying to resolve As soon as possible"
+          }
+        ],
+        "complaint.trying": [
+          {
+            "answer": "We will try to resolve you problem ASAP"
           }
         ]
       }
