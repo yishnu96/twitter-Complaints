@@ -27,6 +27,7 @@ yarn start (for development)
 git clone https://github.com/linnovate/mean
 cd mean
 cp .env.example .env
+npm install -g concurrently
 docker-compose up -d
 ```
 ### Credits 
