@@ -30,7 +30,7 @@ module.exports.allComplaints = function (req, res) {
           manager.save();
           const response = await manager.process('en', element.text );
           console.log(response);
-          
+
           //user element.user and elemt.txt  ==> database
           if(response.answer){
 
@@ -74,16 +74,16 @@ module.exports.allComplaints = function (req, res) {
                     data: null,
                     error: true
                   });
+
                 })
+
               }
 
             })
 
-
-
-
+          }else{
+            continue;
           }
-
 
         });
       })

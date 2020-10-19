@@ -7,6 +7,7 @@ const nlpCtrl = require('../controllers/npl.controller')
 router.get('/showtweets', twitterCtrl.showtweets);
 router.get('/fetch_complaints', twitterCtrl.fetchingComplaints);
 router.get('/resolved_complaints', twitterCtrl.resolvedComplaints);
+router.get('/all_complaints', twitterCtrl.allComplaints);
 
 router.post('/complaint', twitterCtrl.complaint);
 
