@@ -81,8 +81,6 @@ module.exports.allComplaints = function (req, res) {
 
             })
 
-          }else{
-            continue;
           }
 
         });
