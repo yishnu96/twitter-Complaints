@@ -53,7 +53,7 @@ module.exports.allComplaints = function (req, res) {
         .finally(() => {
           // return res.status(200).json({ message: "All Answers", status: 200, data: answerArray, error: false });
           answerArray.forEach(element => {
-            if (element.intent == 'complaint.trying') {
+            if (element.intent != 'None') {
               ComplaintTweets.findOne({
                 tweetId: element._id
               }, function (err, result) {

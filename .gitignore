@@ -45,3 +45,7 @@ Thumbs.db
 
 # Env file
 *.env
+
+/server/config/twitterEnv.js
+
+/notes.md

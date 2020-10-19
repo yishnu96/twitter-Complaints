@@ -15,7 +15,10 @@ export class TweetService {
 
   displaytweeets() {
     return this.http.get(this.url + '/tweets/showtweets');
+    // return this.http.get(this.url + '/tweets/all_complaints');
   }
+
+
 
   fetchingComplaints(){
     return this.http.get(this.url + '/tweets/fetch_complaints');
@@ -26,7 +29,7 @@ export class TweetService {
   }
 
   reactive(user: any) {
-    return this.http.put(this.url + '/tweets//reactive', {user}, {});
+    return this.http.put(this.url + '/tweets/reactive', {user}, {});
   }
 
   // isComplaint(user: any, text: any) {
