@@ -21,7 +21,7 @@ module.exports.allComplaints = function (req, res) {
     tweetArray.forEach(element => {
       manager.process('en', element.text)
         .then(resp => {
-          answerArray.push({ _id: element.id, message: element.text, intent: resp.intent, answer: resp.answer });
+          answerArray.push({ _id: element.id, message: element.text, intent: resp.intent, answer: resp.answer, user: element.user });
         })
         .catch(err => {
           console.log(err);
@@ -30,33 +30,36 @@ module.exports.allComplaints = function (req, res) {
         .finally(() => {
           // return res.status(200).json({ message: "All Answers", status: 200, data: answerArray, error: false });
           answerArray.forEach(element => {
-            ComplaintTweets.find({ tweetId: element._id }, function (err, result) {
-              if (err) {
-                console.error('Error in fetching complaints tweets');
-                return res.status(500).json({ message: "Internal Server Error", status: 500, data: null, error: true });
-              }
-              if (!result) {
-                console.log(element)
-                //Saving to database
-                let newTweet = new ComplaintTweets({
-                  text: element.text, is_resolved: false, is_processing: false,
-                  user: element.user, tweetId: element._id
-                });
-                newTweet
-                  .save()
-                  .then((_newTweet) => {
-                    // Sending responce to twitter
-                    // clint.post(`statuses/update`,'@'+ element.screen_name + response.answer);
-                    return res.status(200).json({ message: "Tweet Saved After Fetch", status: 200, data: _newTweet, error: false });
-                  })
-                  .catch(err => {
-                    console.log(err);
-                    return res.status(500).json({ message: "Internal Server Error", status: 500, data: null, error: true });
-                  })
-              } else {
-                return;
-              }
-            })
+            if (element.intent == 'complaint.trying') {
+              ComplaintTweets.findOne({ tweetId: element._id }, function (err, result) {
+                if (err) {
+                  console.error('Error in fetching complaints tweets');
+                  return res.status(500).json({ message: "Internal Server Error", status: 500, data: null, error: true });
+                }
+                if (!result) {
+                  console.log(element);
+                  //Saving to database
+                  let newTweet = new ComplaintTweets({
+                    text: element.text, is_resolved: false, is_processing: false,
+                    user: element.user, tweetId: element._id
+                  });
+                  newTweet
+                    .save()
+                    .then((_newTweet) => {
+                      // Sending responce to twitter
+                      // clint.post(`statuses/update`,'@'+ element.screen_name + response.answer);
+                      return res.status(200).json({ message: "Tweet Saved After Fetch", status: 200, data: _newTweet, error: false });
+                    })
+                    .catch(err => {
+                      console.log(err);
+                      return res.status(500).json({ message: "Internal Server Error", status: 500, data: null, error: true });
+                    })
+                } else {
+                  console.log(element);
+                  return;
+                }
+              })
+            }
           })
         });
     })
