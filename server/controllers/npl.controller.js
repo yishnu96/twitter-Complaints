@@ -1,6 +1,6 @@
 const { NlpManager } = require('node-nlp');
 
-const manager = new NlpManager({ languages: ['en'], forceNER: true });
+const manager = new NlpManager({ languages: ['en'], nlu: { useNoneFeature: false }, forceNER: true });
 // Adds the utterances and intents for the NLP
 manager.addDocument('en', 'I am getting frustrated', 'complaint.anger');
 manager.addDocument('en', 'problem', 'greetings.hello');
@@ -9,15 +9,15 @@ manager.addDocument('en', 'have major issues', 'greetings.hello');
 manager.addDocument('en', 'connectivity issue', 'greetings.hello');
 manager.addDocument('en', 'issue', 'greetings.hello');
 manager.addDocument('en', 'issues', 'greetings.hello');
-manager.addDocument('en', 'not', 'greetings.hello');
+// manager.addDocument('en', 'not', 'greetings.hello');
 manager.addDocument('en', 'no', 'greetings.hello');
-manager.addDocument('en', 'waiting', 'complaint.problem');
+manager.addDocument('en', 'worst waiting not working', 'complaint.problem');
 manager.addDocument('en', 'service request no', 'greetings.hello');
 manager.addDocument('en', 'complaint', 'greetings.hello');
 manager.addDocument('en', 'slow', 'greetings.hello');
 manager.addDocument('en', 'request number', 'greetings.hello');
 manager.addDocument('en', 'Worst', 'greetings.hello');
-manager.addDocument('en', 'application No.', 'complaint.trying');
+manager.addDocument('en', 'complaint not ', 'complaint.trying');
 
 
 

@@ -6,6 +6,91 @@ const env = require('../config/twitterEnv');
 const clint = new Twitter(env);
 
 
+
+//******  Automatioc Fetch Complaints  ******//
+module.exports.allComplaints = function (req, res) {
+  clint.get('search/tweets', {
+    q: 'to:@airtelindia',
+    count: 10,
+    result_type: 'recent'
+  }, function (err, data, response) {
+    if (err) {
+      console.error('Error in fetching tweets');
+      return res.status(500).json({
+        message: "Internal Server Error",
+        status: 500,
+        data: null,
+        error: true
+      });
+    }
+      // Handling Each Tweets
+      data.statuses.forEach(element =>{
+        (async() => {
+          await manager.train();
+          manager.save();
+          const response = await manager.process('en', element.text );
+          console.log(response);
+          
+          //user element.user and elemt.txt  ==> database
+          if(response.answer){
+
+            ComplaintTweets.find({tweetId : element._id}, function(err, result){
+              if(err){
+                console.error('Error in fetching complaints tweets');
+                return res.status(500).json({
+                  message: "Internal Server Error",
+                  status: 500,
+                  data: null,
+                  error: true
+                });
+              }
+              if(!result){
+                 //Saving to database
+                let newTweet = new ComplaintTweets({
+                  text: element.text,
+                  is_resolved: false,
+                  is_processing: false,
+                  user: element.user,
+                  tweetId : element._id
+                });
+                newTweet
+                .save()
+                .then((_newTweet) => {
+                  // Sending responce to twitter
+                  // clint.post(`statuses/update`,'@'+ element.screen_name + response.answer);
+
+                  return res.status(200).json({
+                    message: "Tweet Saved After Fetch",
+                    status: 200,
+                    data: _newTweet,
+                    error: false
+                  });
+                })
+                .catch(err => {
+                  console.log(err);
+                  return res.status(500).json({
+                    message: "Internal Server Error",
+                    status: 500,
+                    data: null,
+                    error: true
+                  });
+                })
+              }
+
+            })
+
+
+
+
+          }
+
+
+        });
+      })
+  })
+}
+
+
 // ************ Display tweets **********//
 module.exports.showtweets = function(req, res){
   clint.get('search/tweets', {
@@ -29,6 +114,8 @@ module.exports.showtweets = function(req, res){
       data: data.statuses ,
       error: false
     })
+
+
   })
 }
 
@@ -51,6 +138,9 @@ module.exports.fetchingComplaints = function (req, res){
       data: result,
       error: false
     });
+
+
+
   })
 }
 
@@ -83,13 +173,13 @@ module.exports.complaint = function (req, res){
   const user = req.body.user;
   const text = req.body.text;
 
-  // Edit the function
+  // Delete this function
   (async() => {
       await manager.train();
       manager.save();
       const response = await manager.process('en', req.body.text );
-      console.log(response);
-  })();
+      console.log('Training Data \n ------------------',response);
+  })();   //Delete this function
 
 
   if (user || text) {
