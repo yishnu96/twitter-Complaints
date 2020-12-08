@@ -11,7 +11,9 @@ const tweetSchema = new mongoose.Schema({
         type: Object
     },
     is_resolved:{type: Boolean},
+
     is_processing:{type:Boolean},
+    
     tweetId:{type:Number}
 }, {
     timestamps: true

@@ -44,27 +44,27 @@
             "domain": "default"
           },
           "problem": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "complain,custom": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "have,issu,major": {
-            "intent": "greetings.hello",
+            "intent": "complaint.trying",
             "domain": "default"
           },
           "connect,issu": {
-            "intent": "greetings.hello",
+            "intent": "complaint.trying",
             "domain": "default"
           },
           "issu": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "no": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "not,wait,work,worst": {
@@ -72,23 +72,23 @@
             "domain": "default"
           },
           "no,request,servic": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "complaint": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "slow": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "number,request": {
-            "intent": "greetings.hello",
+            "intent": "complaint.problem",
             "domain": "default"
           },
           "worst": {
-            "intent": "greetings.hello",
+            "intent": "complaint.angry",
             "domain": "default"
           },
           "complaint,not": {
@@ -98,9 +98,9 @@
         },
         "intentDict": {
           "complaint.anger": "default",
-          "greetings.hello": "default",
           "complaint.problem": "default",
-          "complaint.trying": "default"
+          "complaint.trying": "default",
+          "complaint.angry": "default"
         },
         "sentences": [
           {
@@ -111,37 +111,37 @@
           {
             "domain": "default",
             "utterance": "problem",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "customers complain",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "have major issues",
-            "intent": "greetings.hello"
+            "intent": "complaint.trying"
           },
           {
             "domain": "default",
             "utterance": "connectivity issue",
-            "intent": "greetings.hello"
+            "intent": "complaint.trying"
           },
           {
             "domain": "default",
             "utterance": "issue",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "issues",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "no",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
@@ -151,27 +151,27 @@
           {
             "domain": "default",
             "utterance": "service request no",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "complaint",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "slow",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "request number",
-            "intent": "greetings.hello"
+            "intent": "complaint.problem"
           },
           {
             "domain": "default",
             "utterance": "Worst",
-            "intent": "greetings.hello"
+            "intent": "complaint.angry"
           },
           {
             "domain": "default",
@@ -217,9 +217,9 @@
             },
             "intents": {
               "complaint.anger": 1,
-              "greetings.hello": 1,
               "complaint.problem": 1,
-              "complaint.trying": 1
+              "complaint.trying": 1,
+              "complaint.angry": 1
             },
             "intentFeatures": {
               "complaint.anger": {
@@ -228,31 +228,32 @@
                 "get": 1,
                 "frustrat": 1
               },
-              "greetings.hello": {
+              "complaint.problem": {
                 "problem": 1,
                 "custom": 1,
                 "complain": 1,
-                "have": 1,
-                "major": 1,
                 "issu": 1,
-                "connect": 1,
                 "no": 1,
+                "worst": 1,
+                "wait": 1,
+                "not": 1,
+                "work": 1,
                 "servic": 1,
                 "request": 1,
                 "complaint": 1,
                 "slow": 1,
-                "number": 1,
-                "worst": 1
-              },
-              "complaint.problem": {
-                "worst": 1,
-                "wait": 1,
-                "not": 1,
-                "work": 1
+                "number": 1
               },
               "complaint.trying": {
+                "have": 1,
+                "major": 1,
+                "issu": 1,
+                "connect": 1,
                 "complaint": 1,
                 "not": 1
+              },
+              "complaint.angry": {
+                "worst": 1
               }
             },
             "featuresToIntent": {
@@ -269,48 +270,24 @@
                 "complaint.anger"
               ],
               "problem": [
-                "greetings.hello"
+                "complaint.problem"
               ],
               "custom": [
-                "greetings.hello"
+                "complaint.problem"
               ],
               "complain": [
-                "greetings.hello"
-              ],
-              "have": [
-                "greetings.hello"
-              ],
-              "major": [
-                "greetings.hello"
+                "complaint.problem"
               ],
               "issu": [
-                "greetings.hello"
-              ],
-              "connect": [
-                "greetings.hello"
-              ],
-              "no": [
-                "greetings.hello"
-              ],
-              "servic": [
-                "greetings.hello"
-              ],
-              "request": [
-                "greetings.hello"
-              ],
-              "complaint": [
-                "greetings.hello",
+                "complaint.problem",
                 "complaint.trying"
               ],
-              "slow": [
-                "greetings.hello"
-              ],
-              "number": [
-                "greetings.hello"
+              "no": [
+                "complaint.problem"
               ],
               "worst": [
-                "greetings.hello",
-                "complaint.problem"
+                "complaint.problem",
+                "complaint.angry"
               ],
               "wait": [
                 "complaint.problem"
@@ -321,6 +298,31 @@
               ],
               "work": [
                 "complaint.problem"
+              ],
+              "servic": [
+                "complaint.problem"
+              ],
+              "request": [
+                "complaint.problem"
+              ],
+              "complaint": [
+                "complaint.problem",
+                "complaint.trying"
+              ],
+              "slow": [
+                "complaint.problem"
+              ],
+              "number": [
+                "complaint.problem"
+              ],
+              "have": [
+                "complaint.trying"
+              ],
+              "major": [
+                "complaint.trying"
+              ],
+              "connect": [
+                "complaint.trying"
               ]
             },
             "neuralNetwork": {
@@ -361,9 +363,9 @@
               ],
               "intents": [
                 "complaint.anger",
-                "greetings.hello",
                 "complaint.problem",
-                "complaint.trying"
+                "complaint.trying",
+                "complaint.angry"
               ],
               "perceptrons": [
                 [
@@ -386,81 +388,81 @@
                   -0.10868623852729797,
                   -0.28574827313423157,
                   -0.3647717833518982,
-                  -0.3347393572330475,
+                  -0.3347410559654236,
                   -0.16423068940639496,
-                  0.3347403178521237
+                  0.3347412391665098
                 ],
                 [
-                  -2.7102761268615723,
-                  -2.7102761268615723,
-                  -2.7102761268615723,
-                  -2.7102761268615723,
-                  3.463736057281494,
-                  1.7251594066619873,
-                  1.7251594066619873,
-                  -0.005401022732257843,
-                  -0.005401022732257843,
-                  3.4520199298858643,
-                  -0.010196935385465622,
-                  3.447577714920044,
-                  3.446979284286499,
-                  -2.3588614463806152,
-                  -13.80643081665039,
-                  -2.3588614463806152,
-                  -1.1448343992233276,
-                  1.1446459293365479,
-                  3.135262966156006,
-                  3.4472508430480957,
-                  2.289773941040039,
-                  10.844516767386443
+                  -2.328829288482666,
+                  -2.328829288482666,
+                  -2.328829288482666,
+                  -2.328829288482666,
+                  4.9822096824646,
+                  2.487173557281494,
+                  2.487173557281494,
+                  -7.140228271484375,
+                  -7.140228271484375,
+                  4.966142177581787,
+                  -14.272539138793945,
+                  4.9852495193481445,
+                  -9.11378288269043,
+                  13.638721466064453,
+                  -13.36207103729248,
+                  13.638721466064453,
+                  -1.6656743288040161,
+                  1.6406755447387695,
+                  4.420421123504639,
+                  4.948164463043213,
+                  3.3062684535980225,
+                  9.318053547371695
                 ],
                 [
-                  -0.08078702539205551,
-                  -0.08078702539205551,
-                  -0.08078702539205551,
-                  -0.08078702539205551,
-                  -0.11446492373943329,
-                  -0.09810771048069,
-                  -0.09810771048069,
-                  -0.052890535444021225,
-                  -0.052890535444021225,
-                  -0.25149890780448914,
-                  -0.05016130581498146,
-                  -0.20357219874858856,
-                  1.1400096416473389,
-                  5.4540205001831055,
-                  3.3697047233581543,
-                  5.4540205001831055,
-                  -0.12033495306968689,
-                  -0.2734680771827698,
-                  -2.234508991241455,
-                  -0.20590056478977203,
-                  -0.1301683634519577,
-                  -1.1345602766397447
+                  -0.332565039396286,
+                  -0.332565039396286,
+                  -0.332565039396286,
+                  -0.332565039396286,
+                  -0.7086359262466431,
+                  -0.4973107874393463,
+                  -0.4973107874393463,
+                  7.152267932891846,
+                  7.152267932891846,
+                  1.8476310968399048,
+                  14.298315048217773,
+                  -0.8347112536430359,
+                  -4.227789402008057,
+                  -3.9757697582244873,
+                  14.07028579711914,
+                  -3.9757697582244873,
+                  -0.2272929847240448,
+                  -0.5623546242713928,
+                  1.9950177669525146,
+                  -0.5461432337760925,
+                  -0.30316007137298584,
+                  -1.8697939191113635
                 ],
                 [
-                  -0.17109350860118866,
-                  -0.17109350860118866,
-                  -0.17109350860118866,
-                  -0.17109350860118866,
-                  -0.35430604219436646,
-                  -0.2531466484069824,
-                  -0.2531466484069824,
-                  -0.1102374792098999,
-                  -0.1102374792098999,
-                  -0.5483070015907288,
-                  -0.12250161170959473,
-                  -0.37244126200675964,
-                  -3.8682186603546143,
-                  -3.825260639190674,
-                  13.403968811035156,
-                  -3.825260639190674,
-                  -0.08092596381902695,
-                  -0.1927637904882431,
-                  2.3071932792663574,
-                  -0.17584407329559326,
-                  -0.0949118360877037,
-                  -1.7991952319404299
+                  -0.38792747259140015,
+                  -0.38792747259140015,
+                  -0.38792747259140015,
+                  -0.38792747259140015,
+                  -1.5514973402023315,
+                  -0.77583247423172,
+                  -0.77583247423172,
+                  -0.17286086082458496,
+                  -0.17286086082458496,
+                  -1.5516527891159058,
+                  -0.23478995263576508,
+                  -1.55144202709198,
+                  12.731547355651855,
+                  -4.696350574493408,
+                  -4.8897705078125,
+                  -4.696350574493408,
+                  -0.13011878728866577,
+                  -0.844375729560852,
+                  -1.5513014793395996,
+                  -1.5512512922286987,
+                  -0.7071722745895386,
+                  1.551729395052812
                 ]
               ]
             }
@@ -546,19 +548,17 @@
     },
     "responses": {
       "en": {
-        "greetings.hello": [
+        "complaint.problem": [
           {
             "answer": "Your Complaint has been Registered "
+          },
+          {
+            "answer": "We are trying to resolve As soon as possible"
           }
         ],
         "complaint.anger": [
           {
             "answer": "Sorry Of your Inconvinence. We are trying to resolve "
-          }
-        ],
-        "complaint.problem": [
-          {
-            "answer": "We are trying to resolve As soon as possible"
           }
         ],
         "complaint.trying": [

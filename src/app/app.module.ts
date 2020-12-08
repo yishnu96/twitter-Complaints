@@ -1,3 +1,4 @@
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,13 +18,14 @@ import { RegisterComplaintModule } from './register-complaint/register-complaint
 import { ResolvedComplaintsComponent } from './resolved-complaints/resolved-complaints.component';
 import { ResolvedComplaintsModule } from './resolved-complaints/resolved-complaints.module';
 import { ChatBoxModule } from './chat-box/chat-box.module';
+import { AllComplaintsComponent } from './all-complaints/all-complaints.component';
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
 }
 
 @NgModule({
   imports: [BrowserAnimationsModule, HttpClientModule, SharedModule, RegisterComplaintModule,ResolvedComplaintsModule,ChatBoxModule, AppRoutingModule ],
-  declarations: [AppComponent, HeaderComponent, HomeComponent, ResolvedComplaintsComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, ResolvedComplaintsComponent, AllComplaintsComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

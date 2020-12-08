@@ -6,12 +6,32 @@ const env = require('../config/twitterEnv');
 const clint = new Twitter(env);
 
 
+module.exports.replyTweet = function (req, res) {
+
+
+  clint.get('search/tweets', { q: 'from:@WorldanRitesh', count: 1 }, function(err, data, response) {
+    console.log(data)
+    const userName = data.statuses[0].user.screen_name;
+    const tweetId = data.statuses[0].id_str;
+
+    console.log("=======================================================\n", userName, tweetId);
+
+    clint.post('statuses/update', { in_reply_to_status_id: tweetId, status: `@${userName} This is send through API of twitter Please delete it ` }, (err, data, response) => {
+        console.log(data);
+        // resolve()
+      })
+
+  })
+
+}
+
+
 
 //******  Automatioc Fetch Complaints  ******//
 module.exports.allComplaints = function (req, res) {
   clint.get('search/tweets', {
-    q: 'to:@airtelindia',
-    count: 10,
+    q: 'to:@airtelindia',   // change to twiier account u want
+    count: 100'o,
     result_type: 'recent'
   }, async (err, data, response) => {
 
@@ -77,10 +97,15 @@ module.exports.allComplaints = function (req, res) {
                     tweetId: element._id
                   });
                   newTweet
-                    .save()
+                    .save() 
                     .then((_newTweet) => {
+
                       // Sending responce to twitter
-                      // clint.post(`statuses/update`,'@'+ element.screen_name + response.answer);
+                      // clint.post('statuses/update', { in_reply_to_status_id: _newTweet.tweetId, status: `@${_newTweet.user.screen_name} This is send through API of twitter Please delete it ` }, (err, data, response) => {
+                      //   console.log(data);
+                      //   // resolve()
+                      // })
+
                       return res.status(200).json({
                         message: "Tweet Saved After Fetch",
                         status: 200,
@@ -113,7 +138,7 @@ module.exports.allComplaints = function (req, res) {
 // ************ Display tweets **********//
 module.exports.showtweets = function (req, res) {
   clint.get('search/tweets', {
-    q: 'to:@airtelindia',
+    q: 'to:@DC_Gurugram',
     count: 10,
     result_type: 'recent'
   }, function (err, data, response) {

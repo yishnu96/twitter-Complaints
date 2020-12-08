@@ -1,1 +1,23 @@
 <p>chat-box works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sl.No</th>
+      <th>Tweets</th>
+      <th>User Name</th>
+      <th>User ID </th>
+      <th>Intent </th>
+    </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let tweet of tweets; let i = index" >
+       <td>{{i+1}}</td>
+       <td>{{ tweet.massage }}</td>
+       <td>{{ tweet.user.name }}</td>
+       <td> @{{ tweet.user.screen_name }}</td>
+       <td >{{ tweet.intent }}</td>
+     </tr>
+   </tbody>
+</table>
+
+<button (onclick)='cdd()'>bkjnkml</button>

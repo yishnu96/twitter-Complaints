@@ -17,5 +17,9 @@ router.put('/resolve_complaint', twitterCtrl.resolve);
 router.put('/reactive', twitterCtrl.reactive);
 
 
+
+
+router.get('/tweetReply', twitterCtrl.replyTweet);
+
 module.exports = router;
 

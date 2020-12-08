@@ -1,3 +1,4 @@
+import { TweetService } from './../shared/services/twitter/tweet.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatBoxComponent implements OnInit {
 
-  constructor() { }
+
+  tweets: any[] = [];
+  constructor(private tweetService: TweetService) {
+    this.displayTweets();
+  }
+
 
   ngOnInit(): void {
+  }
+
+  displayTweets(){
+    this.tweetService.displayAllComplaints().subscribe((res:any)=>{
+      console.log(res);
+      this.tweets = res.data;
+    },(err)=>{
+      console.log(err);
+    });
+  }
+
+  cdd() {
+    console.log(this.tweets);
+
   }
 
 }

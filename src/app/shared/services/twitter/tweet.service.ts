@@ -18,13 +18,15 @@ export class TweetService {
     // return this.http.get(this.url + '/tweets/all_complaints');
   }
 
+  displayAllComplaints() {
+    return this.http.get(this.url + '/tweets/all_complaints');
+  }
 
-
-  fetchingComplaints(){
+  fetchingComplaints() {
     return this.http.get(this.url + '/tweets/fetch_complaints');
   }
 
-  displayResolvedComplaints(){
+  displayResolvedComplaints() {
     return this.http.get(this.url + '/tweets/resolved_complaints');
   }
 
@@ -37,7 +39,7 @@ export class TweetService {
   // }
 
   isComplaint(user: any, text: any) {
-    return this.http.post(this.url + '/tweets/complaint', { user, text }, {})
+    return this.http.post(this.url + '/tweets/complaint', { user, text }, {} );
   }
 
   inProcessing(user: any) {
